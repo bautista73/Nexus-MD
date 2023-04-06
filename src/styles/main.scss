@@ -7,6 +7,17 @@ $main-text: rgb(128,128,128);
 $second-col: rgb(231,233,231);
 
 
+$patients-col: rgb(169,204,219);
+$money-col: rgb(190,220,165);
+$followups-col: rgb(226,201,159);
+$appointments-col: rgb(169,160,216);
+
+$rect-col: #F8F8F8;
+$bg-col: #E7E9E7;
+
+$radius: 0.8rem;
+
+
 :root {
 	font-size: 17px;
 	font-weight: 300;
@@ -38,35 +49,30 @@ body {
     height: 100vh;
     background-color: $main-color;
     font-family: $main-font;
-    font-size: 17px;
-    color: main-color;
+    font-size: 0.56rem;
+    color: $main-text;
 
     &::-webkit-scrollbar { display: none }
 
-    @media screen and (max-width: 780px) {
-        height: 100vh;
-        overflow: hidden;
-    }
 
-    @media screen and (max-width: 480px) {
-        font-size: 14px;
-    }
 }
 
 
 .upper {
     position: absolute;
-    top: 0;
-    margin-left: 20%;
-    width: 80%;
-    height: 13%;
+
+    left: 6rem;
+    width: 100%;
+    height: 6rem;
+    z-index: 1;
+
     // border: 2px solid blue;
 
     input {
         height: 2.5rem;
         width: 12rem;
         background-color: $second-col;
-        border-radius: 0.3rem;
+        border-radius: $radius;
         border-color: $second-col;
         border-style: solid;
     }
@@ -106,7 +112,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.65rem !important;
+    font-size: 0.65rem;
 
     .top1 {
         display: flex;
@@ -137,14 +143,13 @@ body {
     .top3 {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        width: 14rem;
-        // background-color: palegoldenrod;
-        padding-right: 4rem;
+        justify-content: space-evenly;
+        width: 18rem;
+        margin-right: 7rem;
         .username {
 
-            padding-left: 0.5rem;
-            padding-right: 0.5rem;
+            padding-left: 0.8rem;
+            padding-right: 0.8rem;
 
         }
 
@@ -154,7 +159,8 @@ body {
 
         .top3-img {
             // padding-right: 1rem;
-            padding-right: 1rem;
+            padding-right: 0.2rem;
+            max-width: 2rem;
 
         }
 
@@ -171,15 +177,23 @@ body {
 
 .sidebar {
     position: absolute;
-
+    
     height: 100%;
-    width: 20%;
+    width: 6rem;
+
+    padding: 0 2rem;
+
+
 
     max-width: fit-content;
 
     text-align: center;
     top: 0;
-    left: 2rem;
+    left: 0;
+
+    z-index: 1;
+
+
     // border: 2px solid red;
     display: flex;
     flex-direction: column;
@@ -197,16 +211,24 @@ body {
         width: 100%;
         // background-color: palegoldenrod;
 
+        .logo-ico {
+            position: relative;
+            top: 0rem;
+        }
+
+
+
         .tab-img {
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 0.7rem;
             .ico {
                 max-width: 2rem;
+            padding-bottom: 0.5rem;
+
+                
             }
         }
-
     }
 
     .sidebar-wrap-lower {
@@ -216,20 +238,16 @@ body {
         justify-content: space-evenly;
         height: 15%;
         width: 100%;
-        font-size: 0.7rem;
+        font-size: 0.65rem;
         .tab-img {
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 0.7rem;
+            font-size: 0.5rem;
             .ico {
                 max-width: 2rem;
             }
         }
-
-
-
-
     }
 
 
@@ -244,3 +262,210 @@ body {
         }
     }
 }
+
+
+main {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+
+}
+
+
+#dashboard-bg {    
+    position: absolute;
+    top: 5.5rem;
+    left: 6rem;
+
+    width: 90%;
+    height: 86%;
+
+    background-color: $bg-col;
+
+    border-radius: $radius;
+
+    padding: 15px;
+
+
+}
+
+
+
+
+
+.util {
+
+    width: auto;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+
+    }
+    
+    .overview {
+        position: relative;
+
+         grid-area: 1 / 1 / 2 / 5; 
+        
+
+         background-color: $rect-col;
+
+     
+         border-radius: $radius;
+     
+        
+        }
+    .stats { 
+
+        grid-area: 1 / 5 / 2 / 7; 
+                
+        position: relative;
+
+    
+        background-color: $rect-col;
+
+    
+        border-radius: $radius;
+    
+       
+    }
+    .recent { 
+        position: relative;
+
+        grid-area: 2 / 1 / 3 / 3; 
+                
+
+        background-color: $rect-col;
+
+    
+        border-radius: $radius;
+    
+       
+    }
+    .events {
+        position: relative;
+
+         grid-area: 2 / 3 / 3 / 6; 
+                 
+
+     
+         background-color: $rect-col;
+
+     
+         border-radius: $radius;
+     
+        
+        }
+
+
+    .staff { 
+        position: relative;
+
+        grid-area: 2 / 6 / 3 / 7; 
+                
+
+    
+        background-color: $rect-col;
+    
+        border-radius: $radius;
+    
+       
+    }
+
+
+    .overview-widget {
+
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 15px;
+        grid-row-gap: 15px;
+
+        
+        padding: 1rem;
+
+        width: 100%;
+        height: 100%;
+    
+
+
+
+
+
+        }
+        
+        .calendar {
+             grid-area: 1 / 1 / 3 / 4; 
+
+
+             position: relative;
+
+    
+             background-color: white;
+     
+         
+             border-radius: $radius;
+
+
+            }
+
+        .patients-small {
+             grid-area: 1 / 4 / 2 / 5; 
+             position: relative;
+
+    
+             background-color: $patients-col;
+     
+         
+             border-radius: $radius;
+
+
+
+             
+            }
+
+        .money {
+             grid-area: 1 / 5 / 2 / 6; 
+             position: relative;
+
+    
+             background-color: $money-col;
+     
+         
+             border-radius: $radius;
+            }
+
+        .followup {
+             grid-area: 2 / 4 / 3 / 5; 
+             position: relative;
+
+    
+             background-color: $followups-col;
+     
+         
+             border-radius: $radius;
+            }
+
+        .appointments {
+             grid-area: 2 / 5 / 3 / 6; 
+             position: relative;
+
+    
+             background-color: $appointments-col;
+     
+         
+             border-radius: $radius;
+            }
+
+
+
+
